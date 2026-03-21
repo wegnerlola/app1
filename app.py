@@ -79,34 +79,33 @@ async def set_starters():
         cl.Starter(
             label="Morning routine ideation",
             message="Can you help me create a personalized morning routine that would help increase my productivity throughout the day? Start by asking me about my current habits and what activities energize me in the morning.",
-            icon="/public/idea.svg",
+            #icon="/public/idea.svg",
         ),
 
         cl.Starter(
             label="Explain superconductors",
             message="Explain superconductors like I'm five years old.",
-            icon="/public/learn.svg",
+            #icon="/public/learn.svg",
         ),
         cl.Starter(
             label="Python script for daily email reports",
             message="Write a script to automate sending daily email reports in Python, and walk me through how I would set it up.",
-            icon="/public/terminal.svg",
+            #icon="/public/terminal.svg",
             command="code",
         ),
         cl.Starter(
             label="Text inviting friend to wedding",
             message="Write a text asking a friend to be my plus-one at a wedding next month. I want to keep it super short and casual, and offer an out.",
-            icon="/public/write.svg",
+           # icon="/public/write.svg",
         )
     ]
 
 @cl.on_chat_start
-def _start():
+async def _start():
     cl.user_session.set("full_conversation_history", [])
     cl.user_session.set("previous_response_id", None)
     cl.user_session.set("tool_results", {})
     cl.user_session.set("dev_prompt", DEV_PROMPT)
-
 
 # Enhanced debug view with full conversation history
 @cl.step(type="tool")
